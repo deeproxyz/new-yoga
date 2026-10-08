@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouthLife Yoga Institute — The First Step Towards Longevity</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        warm: '#FAF8F3',
+        beige: '#F3EFE6',
+        sage: '#8B9E7E',
+        forest: '#2D5016',
+        gold: '#C5A55A',
+        'gold-light': '#E8D5A3',
+        'gold-dark': '#A68836',
+        charcoal: '#2D2D2D',
+        'charcoal-light': '#6B6B6B',
+      },
+      fontFamily: {
+        display: ['Playfair Display', 'serif'],
+        body: ['Inter', 'sans-serif'],
+      }
+    }
+  }
+}
+</script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:#FAF8F3; color:#2D2D2D; overflow-x:hidden; }
+  ::selection { background:#C5A55A; color:#fff; }
+  ::-webkit-scrollbar { width:8px; }
+  ::-webkit-scrollbar-track { background:#F3EFE6; }
+  ::-webkit-scrollbar-thumb { background:#8B9E7E; border-radius:4px; }
+  ::-webkit-scrollbar-thumb:hover { background:#2D5016; }
+
+  .font-display { font-family:'Playfair Display',serif; }
+  .text-gradient { background:linear-gradient(135deg,#2D5016,#8B9E7E); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .text-gradient-gold { background:linear-gradient(135deg,#C5A55A,#E8D5A3); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+  .reveal { opacity:0; transform:translateY(40px); transition:all 0.8s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.active { opacity:1; transform:translateY(0); }
+  .reveal-left { opacity:0; transform:translateX(-40px); transition:all 0.8s cubic-bezier(0.16,1,0.3,1); }
+  .reveal-left.active { opacity:1; transform:translateX(0); }
+  .reveal-right { opacity:0; transform:translateX(40px); transition:all 0.8s cubic-bezier(0.16,1,0.3,1); }
+  .reveal-right.active { opacity:1; transform:translateX(0); }
+  .reveal-scale { opacity:0; transform:scale(0.9); transition:all 0.8s cubic-bezier(0.16,1,0.3,1); }
+  .reveal-scale.active { opacity:1; transform:scale(1); }
+
+  .stagger-1 { transition-delay:0.1s; }
+  .stagger-2 { transition-delay:0.2s; }
+  .stagger-3 { transition-delay:0.3s; }
+  .stagger-4 { transition-delay:0.4s; }
+  .stagger-5 { transition-delay:0.5s; }
+  .stagger-6 { transition-delay:0.6s; }
+
+  .card-hover { transition:all 0.4s cubic-bezier(0.16,1,0.3,1); }
+  .card-hover:hover { transform:translateY(-8px); box-shadow:0 20px 60px rgba(45,80,22,0.12); }
+
+  .progress-bar-fill { width:0%; transition:width 2s cubic-bezier(0.16,1,0.3,1); }
+  .progress-bar-fill.filled { width:100%; }
+
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+  @keyframes pulse-gold { 0%,100%{box-shadow:0 0 0 0 rgba(197,165,90,0.5)} 70%{box-shadow:0 0 0 15px rgba(197,165,90,0)} }
+  @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+  @keyframes spin-slow { to{transform:rotate(360deg)} }
+  @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes lotus-breathe { 0%,100%{transform:scale(1);opacity:0.06} 50%{transform:scale(1.05);opacity:0.1} }
+
+  .animate-float { animation:float 6s ease-in-out infinite; }
+  .animate-pulse-gold { animation:pulse-gold 2s infinite; }
+  .animate-spin-slow { animation:spin-slow 30s linear infinite; }
+  .animate-lotus { animation:lotus-breathe 8s ease-in-out infinite; }
+
+  .gold-line { height:3px; background:linear-gradient(90deg,transparent,#C5A55A,transparent); }
+  .gold-line-left { height:3px; background:linear-gradient(90deg,#C5A55A,transparent); }
+
+  .section-curve-top { position:absolute; top:-1px; left:0; width:100%; overflow:hidden; line-height:0; }
+  .section-curve-top svg { position:relative; display:block; width:calc(100% + 1.3px); height:60px; }
+  .section-curve-bottom { position:absolute; bottom:-1px; left:0; width:100%; overflow:hidden; line-height:0; transform:rotate(180deg); }
+  .section-curve-bottom svg { position:relative; display:block; width:calc(100% + 1.3px); height:60px; }
+
+  .cert-gallery::-webkit-scrollbar { height:6px; }
+  .cert-gallery::-webkit-scrollbar-thumb { background:#C5A55A; border-radius:3px; }
+  .cert-gallery::-webkit-scrollbar-track { background:#F3EFE6; border-radius:3px; }
+
+  .nav-scrolled { background:rgba(250,248,243,0.95)!important; backdrop-filter:blur(20px)!important; box-shadow:0 2px 30px rgba(45,80,22,0.08)!important; }
+  #navbar.nav-scrolled .nav-logo { height:4.5rem; top:0; }
+  @media (min-width:640px) { #navbar.nav-scrolled .nav-logo { height:5rem; } }
+  @media (min-width:768px) { #navbar.nav-scrolled .nav-logo { height:6rem; } }
+  @media (min-width:1024px) { #navbar.nav-scrolled .nav-logo { height:7rem; } }
+
+  .faq-answer { max-height:0; overflow:hidden; transition:max-height 0.5s cubic-bezier(0.16,1,0.3,1), padding 0.3s; }
+  .faq-item.open .faq-answer { max-height:500px; }
+  .faq-item.open .faq-chevron { transform:rotate(180deg); }
+  .faq-chevron { transition:transform 0.3s; }
+
+  #mobileMenu { width:min(20rem,100vw); }
+  .mobile-menu { transform:translateX(100%); transition:transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+  .mobile-menu.open { transform:translateX(0); }
+
+  .hero-overlay {
+    background:linear-gradient(135deg, rgba(45,80,22,0.75) 0%, rgba(45,80,22,0.4) 40%, rgba(139,158,126,0.3) 100%);
+  }
+
+  .decorative-circle {
+    position:absolute; border-radius:50%; border:1px solid rgba(197,165,90,0.2); pointer-events:none;
+  }
+
+  .star { color:#C5A55A; }
+  .grid > * { min-width:0; }
+  .cert-gallery { min-width:0; max-width:100%; }
+
+  @media (max-width:639px) {
+    section[class*="py-20"] { padding-top:3.5rem; padding-bottom:3.5rem; }
+    .faq-toggle { padding:1rem; }
+    #floatingCTA { right:1rem; bottom:1rem; padding:0.75rem 1rem; }
+    .card-hover:hover { transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAVIGATION ===================== -->
+<nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500" style="background:transparent;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20 md:h-28">
+      <!-- Logo - PROMINENT -->
+      <a href="#" class="flex-shrink-0 group">
+        <img src="Banner.png" alt="YouthLife Yoga Institute" class="nav-logo relative top-4 sm:top-5 md:top-6 lg:top-8 h-20 sm:h-24 md:h-36 lg:h-44 w-auto object-contain drop-shadow-md transition-all duration-300 group-hover:scale-105">
+      </a>
+      <!-- Desktop Nav -->
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="#courses" class="text-sm font-medium text-charcoal/80 hover:text-forest transition-colors">Courses</a>
+        <a href="#founder" class="text-sm font-medium text-charcoal/80 hover:text-forest transition-colors">Founder</a>
+        <a href="#teacher" class="text-sm font-medium text-charcoal/80 hover:text-forest transition-colors">Teacher</a>
+        <a href="#journey" class="text-sm font-medium text-charcoal/80 hover:text-forest transition-colors">Daily Journey</a>
+        <a href="#pricing" class="text-sm font-medium text-charcoal/80 hover:text-forest transition-colors">Pricing</a>
+        <a href="#gallery" class="text-sm font-medium text-charcoal/80 hover:text-forest transition-colors">Gallery</a>
+        <a href="#contact" class="text-sm font-medium text-charcoal/80 hover:text-forest transition-colors">Contact</a>
+        <a href="#contact" class="ml-2 px-6 py-2.5 bg-forest text-white text-sm font-semibold rounded-full hover:bg-forest/90 transition-all shadow-lg shadow-forest/20 hover:shadow-forest/30 hover:-translate-y-0.5">
+          Book a Class
+        </a>
+      </div>
+      <!-- Mobile Toggle -->
+      <button id="menuToggle" class="lg:hidden p-2 rounded-lg hover:bg-beige transition-colors">
+        <i data-lucide="menu" class="w-6 h-6 text-charcoal"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 h-full z-50 bg-warm shadow-2xl">
+  <div class="flex justify-end p-6">
+    <button id="menuClose" class="p-2 rounded-lg hover:bg-beige transition-colors">
+      <i data-lucide="x" class="w-6 h-6 text-charcoal"></i>
+    </button>
+  </div>
+  <div class="flex flex-col px-8 gap-1">
+    <a href="#courses" class="mobile-link py-3 text-lg font-medium text-charcoal hover:text-forest border-b border-beige transition-colors">Courses</a>
+    <a href="#founder" class="mobile-link py-3 text-lg font-medium text-charcoal hover:text-forest border-b border-beige transition-colors">Founder</a>
+    <a href="#teacher" class="mobile-link py-3 text-lg font-medium text-charcoal hover:text-forest border-b border-beige transition-colors">Teacher</a>
+    <a href="#journey" class="mobile-link py-3 text-lg font-medium text-charcoal hover:text-forest border-b border-beige transition-colors">Daily Journey</a>
+    <a href="#pricing" class="mobile-link py-3 text-lg font-medium text-charcoal hover:text-forest border-b border-beige transition-colors">Pricing</a>
+    <a href="#gallery" class="mobile-link py-3 text-lg font-medium text-charcoal hover:text-forest border-b border-beige transition-colors">Gallery</a>
+    <a href="#contact" class="mobile-link py-3 text-lg font-medium text-charcoal hover:text-forest border-b border-beige transition-colors">Contact</a>
+    <a href="#contact" class="mt-6 px-6 py-3 bg-forest text-white text-center font-semibold rounded-full hover:bg-forest/90 transition-all">Book a Class</a>
+  </div>
+</div>
+<div id="menuOverlay" class="fixed inset-0 bg-black/30 z-40 hidden opacity-0 transition-opacity duration-300"></div>
+
+<!-- ===================== HERO ===================== -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="https://z-cdn-media.chatglm.cn/files/5e495afa-635a-471d-8a86-8995a4038962.jpeg?auth_key=1884401708-a6851d53dc42400da858323dd291a243-0-e719037c325188cfba28d5f277f3dc78" alt="YouthLife Yoga Group Session" class="w-full h-full object-cover">
+    <div class="hero-overlay absolute inset-0"></div>
+  </div>
+  <!-- Decorative elements -->
+  <div class="absolute top-20 left-10 w-72 h-72 decorative-circle animate-spin-slow opacity-30"></div>
+  <div class="absolute bottom-20 right-10 w-48 h-48 decorative-circle animate-spin-slow opacity-20" style="animation-direction:reverse;"></div>
+  <div class="absolute top-1/3 right-1/4 w-4 h-4 bg-gold rounded-full animate-float opacity-60"></div>
+  <div class="absolute bottom-1/3 left-1/5 w-3 h-3 bg-gold-light rounded-full animate-float opacity-40" style="animation-delay:2s;"></div>
+
+  <div class="relative z-10 text-center px-4 max-w-5xl mx-auto" style="animation:fadeInUp 1.2s cubic-bezier(0.16,1,0.3,1) forwards;">
+    <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
+      <span class="w-2 h-2 bg-gold rounded-full"></span>
+      <span class="text-white/90 text-sm font-medium tracking-wide">Established with a Vision for Wellness</span>
+    </div>
+    <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-6">
+      The First Step<br>Towards <span class="text-gradient-gold">Longevity</span>
+    </h1>
+    <p class="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+      Transform your body, calm your mind, and discover the ancient science of yoga with YouthLife Yoga Institute — where tradition meets modern wellness.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#courses" class="px-8 py-4 bg-gold text-forest font-semibold rounded-full hover:bg-gold-dark transition-all shadow-lg shadow-gold/30 hover:shadow-gold/50 hover:-translate-y-1 text-lg">
+        Explore Courses
+      </a>
+      <a href="#contact" class="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border border-white/30 hover:bg-white/20 transition-all hover:-translate-y-1 text-lg">
+        Book Free Trial
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float">
+    <span class="text-white/50 text-xs tracking-widest uppercase">Scroll</span>
+    <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+      <div class="w-1.5 h-1.5 bg-gold rounded-full animate-bounce"></div>
+    </div>
+  </div>
+
+  <!-- Bottom curve -->
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="w-full h-16 sm:h-20">
+      <path fill="#FAF8F3" d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- ===================== TRUST BAR ===================== -->
+<section id="trustBar" class="relative py-16 sm:py-20 bg-forest overflow-hidden">
+  <!-- Decorative bg pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-0 left-0 w-full h-full" style="background-image:radial-gradient(circle at 20% 50%, #C5A55A 1px, transparent 1px), radial-gradient(circle at 80% 20%, #C5A55A 1px, transparent 1px); background-size:60px 60px;"></div>
+  </div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Progress bar -->
+    <div class="mb-12 reveal">
+      <div class="flex justify-between items-center mb-3">
+        <span class="text-gold text-sm font-medium tracking-wide uppercase">Our Impact</span>
+        <span class="text-white/40 text-sm">Growing every day</span>
+      </div>
+      <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+        <div id="progressBar" class="progress-bar-fill h-full bg-gradient-to-r from-gold via-gold-light to-gold rounded-full"></div>
+      </div>
+    </div>
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+      <div class="text-center reveal stagger-1">
+        <div class="text-4xl sm:text-5xl font-display font-bold text-gold mb-2">
+          <span class="counter" data-target="5000">0</span><span class="text-gold-light">+</span>
+        </div>
+        <p class="text-white/60 text-sm font-medium">Students Trained</p>
+      </div>
+      <div class="text-center reveal stagger-2">
+        <div class="text-4xl sm:text-5xl font-display font-bold text-gold mb-2">
+          <span class="counter" data-target="8">0</span><span class="text-gold-light">+</span>
+        </div>
+        <p class="text-white/60 text-sm font-medium">Years of Excellence</p>
+      </div>
+      <div class="text-center reveal stagger-3">
+        <div class="text-4xl sm:text-5xl font-display font-bold text-gold mb-2">
+          <span class="counter" data-target="15">0</span><span class="text-gold-light">+</span>
+        </div>
+        <p class="text-white/60 text-sm font-medium">Yoga Programs</p>
+      </div>
+      <div class="text-center reveal stagger-4">
+        <div class="text-4xl sm:text-5xl font-display font-bold text-gold mb-2">
+          <span class="counter" data-target="98">0</span><span class="text-gold-light">%</span>
+        </div>
+        <p class="text-white/60 text-sm font-medium">Student Satisfaction</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHY CHOOSE US ===================== -->
+<section class="relative py-20 sm:py-28 bg-warm overflow-hidden">
+  <!-- Decorative circles -->
+  <div class="decorative-circle w-96 h-96 -top-48 -right-48 animate-lotus"></div>
+  <div class="decorative-circle w-64 h-64 -bottom-32 -left-32 opacity-10"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-4 py-1.5 bg-sage/10 text-sage text-xs font-semibold tracking-widest uppercase rounded-full mb-4">Why YouthLife</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold text-charcoal tracking-tight mb-4">Why Choose <span class="text-gradient">Our Institute</span></h2>
+      <div class="gold-line w-24 mx-auto mt-4 mb-6 rounded-full"></div>
+      <p class="text-charcoal-light text-lg max-w-2xl mx-auto">We combine authentic yoga traditions with modern teaching methodologies to deliver transformative results.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div class="card-hover bg-white rounded-2xl p-8 border border-beige relative overflow-hidden group reveal stagger-1">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-forest to-sage rounded-t-2xl"></div>
+        <div class="w-14 h-14 rounded-2xl bg-sage/10 flex items-center justify-center mb-6 group-hover:bg-sage/20 transition-colors">
+          <i data-lucide="award" class="w-7 h-7 text-forest"></i>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-charcoal mb-3">Certified Instructors</h3>
+        <p class="text-charcoal-light leading-relaxed">Our teachers hold national and international yoga championships, bringing championship-level expertise to every class.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="card-hover bg-white rounded-2xl p-8 border border-beige relative overflow-hidden group reveal stagger-2">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold to-gold-light rounded-t-2xl"></div>
+        <div class="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
+          <i data-lucide="users" class="w-7 h-7 text-gold-dark"></i>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-charcoal mb-3">Small Batch Sizes</h3>
+        <p class="text-charcoal-light leading-relaxed">Maximum 12 students per batch ensures personalized attention, correct posture alignment, and faster progress.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="card-hover bg-white rounded-2xl p-8 border border-beige relative overflow-hidden group reveal stagger-3">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-forest to-sage rounded-t-2xl"></div>
+        <div class="w-14 h-14 rounded-2xl bg-sage/10 flex items-center justify-center mb-6 group-hover:bg-sage/20 transition-colors">
+          <i data-lucide="heart-pulse" class="w-7 h-7 text-forest"></i>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-charcoal mb-3">Holistic Approach</h3>
+        <p class="text-charcoal-light leading-relaxed">Beyond asanas — we integrate pranayama, meditation, and yogic philosophy for complete mind-body wellness.</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="card-hover bg-white rounded-2xl p-8 border border-beige relative overflow-hidden group reveal stagger-4">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold to-gold-light rounded-t-2xl"></div>
+        <div class="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
+          <i data-lucide="calendar-check" class="w-7 h-7 text-gold-dark"></i>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-charcoal mb-3">Flexible Schedules</h3>
+        <p class="text-charcoal-light leading-relaxed">Morning, afternoon, and evening batches designed for working professionals, students, and homemakers alike.</p>
+      </div>
+      <!-- Card 5 -->
+      <div class="card-hover bg-white rounded-2xl p-8 border border-beige relative overflow-hidden group reveal stagger-5">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-forest to-sage rounded-t-2xl"></div>
+        <div class="w-14 h-14 rounded-2xl bg-sage/10 flex items-center justify-center mb-6 group-hover:bg-sage/20 transition-colors">
+          <i data-lucide="trophy" class="w-7 h-7 text-forest"></i>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-charcoal mb-3">Competition Training</h3>
+        <p class="text-charcoal-light leading-relaxed">Specialized training for state, national, and international yoga sports championships with proven medal winners.</p>
+      </div>
+      <!-- Card 6 -->
+      <div class="card-hover bg-white rounded-2xl p-8 border border-beige relative overflow-hidden group reveal stagger-6">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold to-gold-light rounded-t-2xl"></div>
+        <div class="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
+          <i data-lucide="sparkles" class="w-7 h-7 text-gold-dark"></i>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-charcoal mb-3">Age-Appropriate Programs</h3>
+        <p class="text-charcoal-light leading-relaxed">From kids (5+) to seniors (70+) — customized programs that respect every body's unique needs and abilities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COURSES ===================== -->
+<section id="courses" class="relative py-20 sm:py-28 bg-beige overflow-hidden">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-4 py-1.5 bg-forest/10 text-forest text-xs font-semibold tracking-widest uppercase rounded-full mb-4">Our Programs</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold text-charcoal tracking-tight mb-4">Courses Designed for <span class="text-gradient">Every Need</span></h2>
+      <div class="gold-line w-24 mx-auto mt-4 mb-6 rounded-full"></div>
+      <p class="text-charcoal-light text-lg max-w-2xl mx-auto">Choose from our carefully structured programs — each designed to deliver measurable results.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Course 3 - Kids -->
+      <div class="card-hover bg-white rounded-2xl overflow-hidden border border-beige group reveal stagger-1">
+        <div class="relative h-52 overflow-hidden">
+          <img src="https://z-cdn-media.chatglm.cn/files/2e41aa6b-adeb-4a53-b85a-bc7f57da69bf.jpeg?auth_key=1884401708-b516689cd12040e1bfea6a444d83faf3-0-a2ac0eb207175e4de855c55c48880fe3" alt="Kids Yoga" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+          <span class="absolute top-4 left-4 px-3 py-1 bg-sage text-white text-xs font-bold rounded-full uppercase">Kids (5-15)</span>
+          <div class="absolute bottom-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-charcoal text-sm font-semibold rounded-full">₹1,200/mo</div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-display text-xl font-semibold text-charcoal mb-2">Kids Yoga</h3>
+          <p class="text-charcoal-light text-sm mb-4 leading-relaxed">Fun, engaging sessions that build flexibility, focus, and confidence in young minds and bodies.</p>
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-charcoal-light mb-5">
+            <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 45 min</span>
+            <span class="flex items-center gap-1"><i data-lucide="layers" class="w-3.5 h-3.5"></i> Beginners</span>
+            <span class="flex items-center gap-1"><i data-lucide="users" class="w-3.5 h-3.5"></i> 15 max</span>
+          </div>
+          <a href="#contact" class="block w-full py-3 bg-forest text-white text-center text-sm font-semibold rounded-xl hover:bg-forest/90 transition-all">Enroll Now</a>
+        </div>
+      </div>
+      <!-- Course 4 -->
+      <div class="card-hover bg-white rounded-2xl overflow-hidden border border-beige group reveal stagger-2">
+        <div class="relative h-52 overflow-hidden">
+          <img src="1800x1200-what-is-pranayama-seeds.webp" alt="Pranayama and meditation practice" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+          <div class="absolute bottom-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-charcoal text-sm font-semibold rounded-full">₹1,000/mo</div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-display text-xl font-semibold text-charcoal mb-2">Pranayama & Meditation</h3>
+          <p class="text-charcoal-light text-sm mb-4 leading-relaxed">Breathing techniques and guided meditation for stress relief, mental clarity, and inner peace.</p>
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-charcoal-light mb-5">
+            <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 45 min</span>
+            <span class="flex items-center gap-1"><i data-lucide="layers" class="w-3.5 h-3.5"></i> All Levels</span>
+            <span class="flex items-center gap-1"><i data-lucide="users" class="w-3.5 h-3.5"></i> 20 max</span>
+          </div>
+          <a href="#contact" class="block w-full py-3 bg-forest text-white text-center text-sm font-semibold rounded-xl hover:bg-forest/90 transition-all">Enroll Now</a>
+        </div>
+      </div>
+      <!-- Course 5 -->
+      <div class="card-hover bg-white rounded-2xl overflow-hidden border border-beige group reveal stagger-3">
+        <div class="relative h-52 overflow-hidden">
+          <img src="compete.jpg" alt="Competition Training" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+          <span class="absolute top-4 left-4 px-3 py-1 bg-gold text-forest text-xs font-bold rounded-full uppercase">Elite</span>
+          <div class="absolute bottom-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-charcoal text-sm font-semibold rounded-full">₹3,000/mo</div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-display text-xl font-semibold text-charcoal mb-2">Competition Training</h3>
+          <p class="text-charcoal-light text-sm mb-4 leading-relaxed">Intensive preparation for state, national & international yoga sports championships with medal-winning coaching.</p>
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-charcoal-light mb-5">
+            <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 90 min</span>
+            <span class="flex items-center gap-1"><i data-lucide="layers" class="w-3.5 h-3.5"></i> Advanced</span>
+            <span class="flex items-center gap-1"><i data-lucide="users" class="w-3.5 h-3.5"></i> 8 max</span>
+          </div>
+          <a href="#contact" class="block w-full py-3 bg-forest text-white text-center text-sm font-semibold rounded-xl hover:bg-forest/90 transition-all">Enroll Now</a>
+        </div>
+      </div>
+      <!-- Course 6 -->
+      <div class="card-hover bg-white rounded-2xl overflow-hidden border border-beige group reveal stagger-4">
+        <div class="relative h-52 overflow-hidden">
+          <img src="old.jpg" alt="Senior Citizen Yoga" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+          <span class="absolute top-4 left-4 px-3 py-1 bg-sage text-white text-xs font-bold rounded-full uppercase">55+ Years</span>
+          <div class="absolute bottom-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-charcoal text-sm font-semibold rounded-full">₹1,000/mo</div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-display text-xl font-semibold text-charcoal mb-2">Senior Citizen Yoga</h3>
+          <p class="text-charcoal-light text-sm mb-4 leading-relaxed">Gentle yoga and chair yoga focused on joint mobility, balance, and maintaining independence in daily life.</p>
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-charcoal-light mb-5">
+            <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 45 min</span>
+            <span class="flex items-center gap-1"><i data-lucide="layers" class="w-3.5 h-3.5"></i> Gentle</span>
+            <span class="flex items-center gap-1"><i data-lucide="users" class="w-3.5 h-3.5"></i> 15 max</span>
+          </div>
+          <a href="#contact" class="block w-full py-3 bg-forest text-white text-center text-sm font-semibold rounded-xl hover:bg-forest/90 transition-all">Enroll Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOUNDER — SUBROTA MAHATO ===================== -->
+<section id="founder" class="relative py-20 sm:py-28 bg-warm overflow-hidden">
+  <div class="decorative-circle w-80 h-80 top-10 -left-40 animate-lotus"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Image -->
+      <div class="reveal-left">
+        <div class="relative">
+          <div class="absolute -inset-4 bg-gradient-to-br from-sage/20 to-gold/20 rounded-3xl blur-2xl"></div>
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-forest/10">
+            <img src="https://picsum.photos/seed/founderyoga/700/900" alt="Subrota Mahato - Founder" class="w-full h-96 sm:h-[500px] lg:h-[600px] object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-forest/60 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center">
+                  <i data-lucide="crown" class="w-6 h-6 text-forest"></i>
+                </div>
+                <div>
+                  <p class="text-white font-display font-semibold text-lg">Subrota Mahato</p>
+                  <p class="text-white/70 text-sm">Founder & Director</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Floating accent card -->
+          <div class="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-xl p-4 border border-beige animate-float hidden md:block">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-forest/10 rounded-lg flex items-center justify-center">
+                <i data-lucide="target" class="w-5 h-5 text-forest"></i>
+              </div>
+              <div>
+                <p class="text-xs text-charcoal-light">Mission</p>
+                <p class="text-sm font-semibold text-charcoal">Yoga for Longevity</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Content -->
+      <div class="reveal-right">
+        <span class="inline-block px-4 py-1.5 bg-gold/10 text-gold-dark text-xs font-semibold tracking-widest uppercase rounded-full mb-4">Meet Our Founder</span>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold text-charcoal tracking-tight mb-2">Subrota Mahato</h2>
+        <p class="text-gradient-gold font-display text-xl font-medium mb-6">Founder & Visionary, YouthLife Yoga Institute</p>
+        <div class="gold-line-left w-16 mb-6 rounded-full"></div>
+        <p class="text-charcoal-light leading-relaxed mb-6">
+          With a deep-rooted belief that yoga is the ultimate path to longevity, Subrota Mahato founded YouthLife Yoga Institute to bridge the gap between ancient yogic wisdom and modern lifestyle needs. His vision is simple yet powerful — make authentic, result-oriented yoga accessible to every individual, regardless of age or fitness level.
+        </p>
+        <p class="text-charcoal-light leading-relaxed mb-8">
+          Under his leadership, the institute has grown from a small local class to a recognized name in yoga education, producing state and national-level yoga champions. His approach combines scientific understanding of the human body with traditional yogic principles.
+        </p>
+        <!-- Qualifications -->
+        <div class="grid sm:grid-cols-2 gap-4 mb-8">
+          <div class="flex items-start gap-3 p-4 bg-beige/60 rounded-xl">
+            <i data-lucide="check-circle-2" class="w-5 h-5 text-forest flex-shrink-0 mt-0.5"></i>
+            <div>
+              <p class="text-sm font-semibold text-charcoal">Certified Yoga Instructor</p>
+              <p class="text-xs text-charcoal-light">Government recognized certification</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 bg-beige/60 rounded-xl">
+            <i data-lucide="check-circle-2" class="w-5 h-5 text-forest flex-shrink-0 mt-0.5"></i>
+            <div>
+              <p class="text-sm font-semibold text-charcoal">Yoga Sports Coach</p>
+              <p class="text-xs text-charcoal-light">National-level championship coach</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 bg-beige/60 rounded-xl">
+            <i data-lucide="check-circle-2" class="w-5 h-5 text-forest flex-shrink-0 mt-0.5"></i>
+            <div>
+              <p class="text-sm font-semibold text-charcoal">Wellness Consultant</p>
+              <p class="text-xs text-charcoal-light">Lifestyle & longevity specialist</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 bg-beige/60 rounded-xl">
+            <i data-lucide="check-circle-2" class="w-5 h-5 text-forest flex-shrink-0 mt-0.5"></i>
+            <div>
+              <p class="text-sm font-semibold text-charcoal">8+ Years Teaching</p>
+              <p class="text-xs text-charcoal-light">5000+ students trained</p>
+            </div>
+          </div>
+        </div>
+        <blockquote class="border-l-4 border-gold pl-5 py-2">
+          <p class="font-display text-lg italic text-charcoal/80">"Yoga is not just exercise — it is the science of living longer, living better."</p>
+          <cite class="text-sm text-gold-dark font-medium not-italic mt-2 block">— Subrota Mahato</cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TEACHER — JAYASHREE MAHATO ===================== -->
+<section id="teacher" class="relative py-20 sm:py-28 bg-beige overflow-hidden">
+  <div class="decorative-circle w-72 h-72 -bottom-36 -right-36 animate-lotus" style="animation-delay:3s;"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Content (left on desktop) -->
+      <div class="reveal-left order-2 lg:order-1">
+        <span class="inline-block px-4 py-1.5 bg-forest/10 text-forest text-xs font-semibold tracking-widest uppercase rounded-full mb-4">Professional Teacher</span>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold text-charcoal tracking-tight mb-2">Jayashree Mahato</h2>
+        <p class="text-gradient font-display text-xl font-medium mb-6">Championship Yoga Instructor & Lead Teacher</p>
+        <div class="gold-line-left w-16 mb-6 rounded-full"></div>
+        <p class="text-charcoal-light leading-relaxed mb-6">
+          Jayashree Mahato is not just a teacher — she is a proven champion. With multiple gold and silver medals at state, national, and world yoga championships, she brings an unmatched level of expertise and authenticity to every class she leads at YouthLife Yoga Institute.
+        </p>
+        <p class="text-charcoal-light leading-relaxed mb-8">
+          Her specialization in Traditional Yogasana and Rhythmic Yoga has helped dozens of students win competitions at district, state, and national levels. She is particularly passionate about women's yoga wellness and mothers' special programs.
+        </p>
+        <!-- Achievement badges -->
+        <div class="flex flex-wrap gap-3 mb-8">
+          <span class="px-4 py-2 bg-gold/15 text-gold-dark text-sm font-semibold rounded-full flex items-center gap-2">
+            <i data-lucide="medal" class="w-4 h-4"></i> World Championship Silver
+          </span>
+          <span class="px-4 py-2 bg-forest/10 text-forest text-sm font-semibold rounded-full flex items-center gap-2">
+            <i data-lucide="trophy" class="w-4 h-4"></i> 3× State Gold Medalist
+          </span>
+          <span class="px-4 py-2 bg-sage/15 text-sage text-sm font-semibold rounded-full flex items-center gap-2">
+            <i data-lucide="star" class="w-4 h-4"></i> UYSF Certified
+          </span>
+        </div>
+
+        <!-- Certificate Gallery -->
+        <h4 class="font-display text-lg font-semibold text-charcoal mb-4 flex items-center gap-2">
+          <i data-lucide="file-badge" class="w-5 h-5 text-gold"></i> Verified Certificates & Achievements
+        </h4>
+        <div class="cert-gallery flex gap-4 overflow-x-auto pb-4 -mx-2 px-2">
+          <div class="flex-shrink-0 w-56 rounded-xl overflow-hidden border-2 border-gold/30 shadow-lg hover:shadow-xl hover:border-gold/60 transition-all cursor-pointer group">
+            <img src="https://z-cdn-media.chatglm.cn/files/bf187a6b-978f-44fa-8b33-37968caa9a60.jpeg?auth_key=1884401708-b9849a173c31466aab9ca7f7c7c7cbeb-0-849a9deda07e0903a191bf27a14988be" alt="World Championship Certificate" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="p-2.5 bg-white">
+              <p class="text-xs font-semibold text-charcoal truncate">World Yoga Championship 2022</p>
+              <p class="text-[10px] text-gold-dark font-medium">🥈 Silver — Traditional Yogasana</p>
+            </div>
+          </div>
+          <div class="flex-shrink-0 w-56 rounded-xl overflow-hidden border-2 border-gold/30 shadow-lg hover:shadow-xl hover:border-gold/60 transition-all cursor-pointer group">
+            <img src="https://z-cdn-media.chatglm.cn/files/034c2dbf-ef3e-43f6-a759-64280263d21b.jpeg?auth_key=1884401708-f74db4745bdd4d66963f4ddcaeda1fb1-0-f2f8dbb9e63b0126fd61810336d8fdd3" alt="UP State Gold Certificate" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="p-2.5 bg-white">
+              <p class="text-xs font-semibold text-charcoal truncate">UP State Yoga Championship 2022</p>
+              <p class="text-[10px] text-gold-dark font-medium">🥇 Gold — Traditional Yogasana</p>
+            </div>
+          </div>
+          <div class="flex-shrink-0 w-56 rounded-xl overflow-hidden border-2 border-gold/30 shadow-lg hover:shadow-xl hover:border-gold/60 transition-all cursor-pointer group">
+            <img src="https://z-cdn-media.chatglm.cn/files/62f5504b-9f26-4dd5-a386-40496a35bc1b.jpeg?auth_key=1884401708-cbd4f4a20a3845a49b73c7d4d7c5668e-0-cd700fa92d2060befd4b906b439ec4a2" alt="Rhythmic Solo Certificate" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="p-2.5 bg-white">
+              <p class="text-xs font-semibold text-charcoal truncate">UP State Yoga Championship 2022</p>
+              <p class="text-[10px] text-gold-dark font-medium">🥇 Gold — Rhythmic Solo</p>
+            </div>
+          </div>
+          <div class="flex-shrink-0 w-56 rounded-xl overflow-hidden border-2 border-gold/30 shadow-lg hover:shadow-xl hover:border-gold/60 transition-all cursor-pointer group">
+            <img src="https://z-cdn-media.chatglm.cn/files/a68304c8-2389-43ec-a68e-50fc7353a452.jpeg?auth_key=1884401708-3318819a795a4fc0801488524433dcc7-0-710806d3c73e005d9cacafdefa9e6532" alt="Mom's Special Certificate" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="p-2.5 bg-white">
+              <p class="text-xs font-semibold text-charcoal truncate">UP State Yoga Championship 2022</p>
+              <p class="text-[10px] text-gold-dark font-medium">🥇 Gold — Mom's Special</p>
+            </div>
+          </div>
+          <div class="flex-shrink-0 w-56 rounded-xl overflow-hidden border-2 border-gold/30 shadow-lg hover:shadow-xl hover:border-gold/60 transition-all cursor-pointer group">
+            <img src="https://z-cdn-media.chatglm.cn/files/43879c56-063e-4234-a285-3740c0ebc54a.jpeg?auth_key=1884401708-44a87c1f51df4b5388467ae010564d52-0-dd0a200defef4b4e8f5f95f7bc2d4ccc" alt="Open National Certificate" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="p-2.5 bg-white">
+              <p class="text-xs font-semibold text-charcoal truncate">Open National Sports Championship 2023</p>
+              <p class="text-[10px] text-gold-dark font-medium">🏅 Yoga Participant — National Level</p>
+            </div>
+          </div>
+          <div class="flex-shrink-0 w-56 rounded-xl overflow-hidden border-2 border-gold/30 shadow-lg hover:shadow-xl hover:border-gold/60 transition-all cursor-pointer group">
+            <img src="https://z-cdn-media.chatglm.cn/files/d2f7ee76-c580-48ca-aee5-3cc52c5d938a.jpeg?auth_key=1884401708-13c309e0fdcd428ebf238237622c1a5c-0-dfa036ad3d2c14f8e6adafc6dca1ccbb" alt="District Championship Certificate" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="p-2.5 bg-white">
+              <p class="text-xs font-semibold text-charcoal truncate">Nainital District Championship 2022</p>
+              <p class="text-[10px] text-gold-dark font-medium">🏅 Traditional Yogasana — District</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Image (right on desktop) -->
+      <div class="reveal-right order-1 lg:order-2">
+        <div class="relative">
+          <div class="absolute -inset-4 bg-gradient-to-tl from-gold/20 to-sage/20 rounded-3xl blur-2xl"></div>
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-forest/10">
+            <img src="Jayshree.jpeg" alt="Jayashree Mahato - Professional Yoga Teacher" class="w-full h-[420px] sm:h-[500px] lg:h-[660px] object-cover object-center" style="object-position: center 15%;">
+            <div class="absolute inset-0 bg-gradient-to-t from-forest/60 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center">
+                  <i data-lucide="medal" class="w-6 h-6 text-forest"></i>
+                </div>
+                <div>
+                  <p class="text-white font-display font-semibold text-lg">Jayashree Mahato</p>
+                  <p class="text-white/70 text-sm">Championship Instructor</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Floating medal card -->
+          <div class="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-4 border border-beige animate-float hidden md:block" style="animation-delay:1.5s;">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-gold/10 rounded-lg flex items-center justify-center">
+                <i data-lucide="trophy" class="w-5 h-5 text-gold-dark"></i>
+              </div>
+              <div>
+                <p class="text-xs text-charcoal-light">Achievements</p>
+                <p class="text-sm font-semibold text-charcoal">5+ Gold Medals</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DAILY JOURNEY TIMELINE ===================== -->
+<section id="journey" class="relative py-20 sm:py-28 bg-warm overflow-hidden">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-4 py-1.5 bg-sage/10 text-sage text-xs font-semibold tracking-widest uppercase rounded-full mb-4">A Day at YouthLife</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold text-charcoal tracking-tight mb-4">Your Daily <span class="text-gradient">Yoga Journey</span></h2>
+      <div class="gold-line w-24 mx-auto mt-4 mb-6 rounded-full"></div>
+      <p class="text-charcoal-light text-lg max-w-2xl mx-auto">Every session at YouthLife is thoughtfully structured to take you from warm-up to deep relaxation.</p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative">
+      <!-- Vertical line -->
+      <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold via-sage to-forest"></div>
+
+      <!-- Step 1 -->
+      <div class="relative md:grid md:grid-cols-2 md:gap-12 mb-12 reveal">
+        <div class="md:text-right md:pr-12">
+          <div class="bg-white rounded-2xl p-6 border border-beige card-hover inline-block text-left">
+            <div class="flex items-center gap-3 mb-3 md:flex-row-reverse">
+              <div class="w-10 h-10 bg-gold/15 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i data-lucide="sunrise" class="w-5 h-5 text-gold-dark"></i>
+              </div>
+              <span class="text-gold-dark font-semibold text-sm">6:00 AM — 6:15 AM</span>
+            </div>
+            <h3 class="font-display text-xl font-semibold text-charcoal mb-2">Centering & Warm-up</h3>
+            <p class="text-charcoal-light text-sm leading-relaxed">Begin with guided centering, gentle joint rotations, and Sukshma Vyayama to prepare the body for deeper practice.</p>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center shadow-lg shadow-gold/30 z-10">1</div>
+        </div>
+        <div class="hidden md:block"></div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="relative md:grid md:grid-cols-2 md:gap-12 mb-12 reveal">
+        <div class="hidden md:block"></div>
+        <div class="hidden md:flex items-center justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div class="w-12 h-12 bg-sage rounded-full flex items-center justify-center shadow-lg shadow-sage/30 z-10">2</div>
+        </div>
+        <div class="md:pl-12">
+          <div class="bg-white rounded-2xl p-6 border border-beige card-hover inline-block">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 bg-sage/15 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i data-lucide="wind" class="w-5 h-5 text-forest"></i>
+              </div>
+              <span class="text-forest font-semibold text-sm">6:15 AM — 6:30 AM</span>
+            </div>
+            <h3 class="font-display text-xl font-semibold text-charcoal mb-2">Pranayama Practice</h3>
+            <p class="text-charcoal-light text-sm leading-relaxed">Structured breathing techniques — Anulom Vilom, Kapalbhati, Bhastrika — to energize the body and calm the nervous system.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="relative md:grid md:grid-cols-2 md:gap-12 mb-12 reveal">
+        <div class="md:text-right md:pr-12">
+          <div class="bg-white rounded-2xl p-6 border border-beige card-hover inline-block text-left">
+            <div class="flex items-center gap-3 mb-3 md:flex-row-reverse">
+              <div class="w-10 h-10 bg-forest/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i data-lucide="person-standing" class="w-5 h-5 text-forest"></i>
+              </div>
+              <span class="text-forest font-semibold text-sm">6:30 AM — 7:15 AM</span>
+            </div>
+            <h3 class="font-display text-xl font-semibold text-charcoal mb-2">Main Asana Practice</h3>
+            <p class="text-charcoal-light text-sm leading-relaxed">Core yoga postures tailored to the day's focus — standing poses, forward folds, backbends, twists, and inversions with proper alignment.</p>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div class="w-12 h-12 bg-forest rounded-full flex items-center justify-center shadow-lg shadow-forest/30 text-white z-10">3</div>
+        </div>
+        <div class="hidden md:block"></div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="relative md:grid md:grid-cols-2 md:gap-12 reveal">
+        <div class="hidden md:block"></div>
+        <div class="hidden md:flex items-center justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center shadow-lg shadow-gold/30 z-10">4</div>
+        </div>
+        <div class="md:pl-12">
+          <div class="bg-white rounded-2xl p-6 border border-beige card-hover inline-block">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 bg-gold/15 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i data-lucide="moon" class="w-5 h-5 text-gold-dark"></i>
+              </div>
+              <span class="text-gold-dark font-semibold text-sm">7:15 AM — 7:30 AM</span>
+            </div>
+            <h3 class="font-display text-xl font-semibold text-charcoal mb-2">Meditation & Shavasana</h3>
+            <p class="text-charcoal-light text-sm leading-relaxed">Guided Yoga Nidra or meditation followed by Shavasana — deep relaxation to integrate the benefits of your practice.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRANSFORMATIONS / TESTIMONIALS ===================== -->
+<section id="testimonials" class="relative py-20 sm:py-28 bg-forest overflow-hidden">
+  <!-- Decorative -->
+  <div class="absolute top-0 left-0 w-full h-full opacity-5">
+    <div style="background-image:radial-gradient(circle at 30% 70%, #C5A55A 1px, transparent 1px), radial-gradient(circle at 70% 30%, #C5A55A 1px, transparent 1px); background-size:80px 80px;" class="w-full h-full"></div>
+  </div>
+  <div class="decorative-circle w-96 h-96 -top-48 -right-48 border-white/10"></div>
+  <div class="decorative-circle w-64 h-64 -bottom-32 -left-32 border-white/10"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-4 py-1.5 bg-gold/20 text-gold-light text-xs font-semibold tracking-widest uppercase rounded-full mb-4">Real Stories</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold text-white tracking-tight mb-4">Student <span class="text-gradient-gold">Transformations</span></h2>
+      <div class="gold-line w-24 mx-auto mt-4 mb-6 rounded-full"></div>
+      <p class="text-white/60 text-lg max-w-2xl mx-auto">Don't take our word for it — hear from the people whose lives have been transformed through yoga.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Testimonial 1 -->
+      <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-gold/30 transition-all duration-500 hover:bg-white/10 reveal stagger-1">
+        <div class="flex items-center gap-1 mb-4">
+          <span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span>
+        </div>
+        <p class="text-white/80 leading-relaxed mb-6 text-[15px]">"I joined YouthLife 6 months ago with severe lower back pain from sitting at a desk for 10 years. Within 8 weeks, my pain reduced by 80%. Jayashree ma'am corrected my posture in ways no physiotherapist could. I'm now doing Bhujangasana and Dhanurasana — things I never imagined possible at 42."</p>
+        <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+          <img src="https://picsum.photos/seed/person1india/100/100" alt="Priya Sharma" class="w-12 h-12 rounded-full object-cover">
+          <div>
+            <p class="text-white font-semibold text-sm">Priya Sharma</p>
+            <p class="text-white/40 text-xs">IT Professional, Delhi • 6 months</p>
+          </div>
+        </div>
+      </div>
+      <!-- Testimonial 2 -->
+      <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-gold/30 transition-all duration-500 hover:bg-white/10 reveal stagger-2">
+        <div class="flex items-center gap-1 mb-4">
+          <span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span>
+        </div>
+        <p class="text-white/80 leading-relaxed mb-6 text-[15px]">"My daughter Ananya was shy and had poor concentration in school. After 3 months of kids yoga at YouthLife, her teacher called me saying she's like a different child — focused, confident, and even won a inter-school yoga competition! The patience of the teachers here is remarkable."</p>
+        <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+          <img src="https://picsum.photos/seed/person2mom/100/100" alt="Sunita Devi" class="w-12 h-12 rounded-full object-cover">
+          <div>
+            <p class="text-white font-semibold text-sm">Sunita Devi</p>
+            <p class="text-white/40 text-xs">Homemaker, Dwarka • 4 months</p>
+          </div>
+        </div>
+      </div>
+      <!-- Testimonial 3 -->
+      <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-gold/30 transition-all duration-500 hover:bg-white/10 reveal stagger-3">
+        <div class="flex items-center gap-1 mb-4">
+          <span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span>
+        </div>
+        <p class="text-white/80 leading-relaxed mb-6 text-[15px]">"At 58, I thought yoga wasn't for me. Subrota ji personally guided me through chair yoga and gentle stretches. My knee pain has reduced significantly, I sleep better, and I've lost 4 kg without any diet change. This institute treats every student with genuine care."</p>
+        <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+          <img src="https://picsum.photos/seed/person3senior/100/100" alt="Rajesh Kumar" class="w-12 h-12 rounded-full object-cover">
+          <div>
+            <p class="text-white font-semibold text-sm">Rajesh Kumar Tiwari</p>
+            <p class="text-white/40 text-xs">Retired Govt. Officer • 8 months</p>
+          </div>
+        </div>
+      </div>
+      <!-- Testimonial 4 -->
+      <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-gold/30 transition-all duration-500 hover:bg-white/10 reveal stagger-4">
+        <div class="flex items-center gap-1 mb-4">
+          <span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span>
+        </div>
+        <p class="text-white/80 leading-relaxed mb-6 text-[15px]">"I trained under Jayashree ma'am for the UP State Yoga Championship and won a bronze medal in my very first competition! Her understanding of competition-level Traditional Yogasana is incredible. She knows exactly which asanas to pick and how to perfect the transitions."</p>
+        <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+          <img src="https://picsum.photos/seed/person4student/100/100" alt="Kavita Yadav" class="w-12 h-12 rounded-full object-cover">
+          <div>
+            <p class="text-white font-semibold text-sm">Kavita Yadav</p>
+            <p class="text-white/40 text-xs">College Student, Meerut • 1 year</p>
+          </div>
+        </div>
+      </div>
+      <!-- Testimonial 5 -->
+      <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-gold/30 transition-all duration-500 hover:bg-white/10 reveal stagger-5">
+        <div class="flex items-center gap-1 mb-4">
+          <span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg opacity-30">★</span>
+        </div>
+        <p class="text-white/80 leading-relaxed mb-6 text-[15px]">"As a working mother of two, I barely had 45 minutes to spare. The morning batch at YouthLife fits perfectly into my schedule. The pranayama sessions have helped me manage my anxiety without medication. I only wish I had discovered this place sooner."</p>
+        <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+          <img src="https://picsum.photos/seed/person5workmom/100/100" alt="Neha Agarwal" class="w-12 h-12 rounded-full object-cover">
+          <div>
+            <p class="text-white font-semibold text-sm">Neha Agarwal</p>
+            <p class="text-white/40 text-xs">Marketing Manager, Noida • 5 months</p>
+          </div>
+        </div>
+      </div>
+      <!-- Testimonial 6 -->
+      <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-gold/30 transition-all duration-500 hover:bg-white/10 reveal stagger-6">
+        <div class="flex items-center gap-1 mb-4">
+          <span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span><span class="star text-lg">★</span>
+        </div>
+        <p class="text-white/80 leading-relaxed mb-6 text-[15px]">"I've tried 4 different yoga studios in Dwarka before finding YouthLife. The difference is night and day — here, they actually track your progress. Subrota bhaiya gave me a personal chart showing my flexibility improvement over 3 months. That professionalism is rare."</p>
+        <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+          <img src="https://picsum.photos/seed/person6man/100/100" alt="Deepak Rawat" class="w-12 h-12 rounded-full object-cover">
+          <div>
+            <p class="text-white font-semibold text-sm">Deepak Rawat</p>
+            <p class="text-white/40 text-xs">Business Owner, Dwarka • 1 year</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRICING / OFFER BAND ===================== -->
+<section id="pricing" class="relative py-20 sm:py-28 bg-warm overflow-hidden">
+  <div class="decorative-circle w-80 h-80 top-20 -right-40 animate-lotus"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-4 py-1.5 bg-gold/10 text-gold-dark text-xs font-semibold tracking-widest uppercase rounded-full mb-4">Special Offers</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold text-charcoal tracking-tight mb-4">Choose Your <span class="text-gradient">Path to Wellness</span></h2>
+      <div class="gold-line w-24 mx-auto mt-4 mb-6 rounded-full"></div>
+      <p class="text-charcoal-light text-lg max-w-2xl mx-auto">Simple, transparent pricing. No hidden fees. Start with a free trial class.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <!-- Basic -->
+      <div class="card-hover bg-white rounded-2xl p-8 border border-beige relative reveal stagger-1">
+        <div class="text-center mb-8">
+          <h3 class="font-display text-xl font-semibold text-charcoal mb-2">Starter</h3>
+          <p class="text-charcoal-light text-sm mb-6">Perfect for beginners</p>
+          <div class="flex items-baseline justify-center gap-1">
+            <span class="text-4xl font-display font-bold text-charcoal">₹2,000</span>
+            <span class="text-charcoal-light text-sm">/month</span>
+          </div>
+        </div>
+        <div class="gold-line w-full mb-6 rounded-full"></div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3 text-sm text-charcoal-light"><i data-lucide="check" class="w-4 h-4 text-forest flex-shrink-0"></i> 12 classes per month</li>
+          <li class="flex items-center gap-3 text-sm text-charcoal-light"><i data-lucide="check" class="w-4 h-4 text-forest flex-shrink-0"></i> Hatha Yoga batches</li>
+          <li class="flex items-center gap-3 text-sm text-charcoal-light"><i data-lucide="check" class="w-4 h-4 text-forest flex-shrink-0"></i> Pranayama sessions</li>
+          <li class="flex items-center gap-3 text-sm text-charcoal-light"><i data-lucide="check" class="w-4 h-4 text-forest flex-shrink-0"></i> Yoga mat provided</li>
+          <li class="flex items-center gap-3 text-sm text-charcoal-light/50"><i data-lucide="x" class="w-4 h-4 text-charcoal-light/30 flex-shrink-0"></i> Personal guidance</li>
+          <li class="flex items-center gap-3 text-sm text-charcoal-light/50"><i data-lucide="x" class="w-4 h-4 text-charcoal-light/30 flex-shrink-0"></i> Diet consultation</li>
+        </ul>
+        <a href="#contact" class="block w-full py-3 border-2 border-forest text-forest text-center text-sm font-semibold rounded-xl hover:bg-forest hover:text-white transition-all">Get Started</a>
+      </div>
+
+      <!-- Popular - Featured -->
+      <div class="card-hover bg-forest rounded-2xl p-8 border-2 border-gold relative reveal stagger-2 shadow-xl shadow-forest/20 md:-mt-4 md:mb-[-16px]">
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1.5 bg-gold text-forest text-xs font-bold rounded-full uppercase tracking-wider">Most Popular</div>
+        <div class="text-center mb-8 mt-2">
+          <h3 class="font-display text-xl font-semibold text-white mb-2">Pro Wellness</h3>
+          <p class="text-white/60 text-sm mb-6">For serious practitioners</p>
+          <div class="flex items-baseline justify-center gap-1">
+            <span class="text-4xl font-display font-bold text-gold">₹2,500</span>
+            <span class="text-white/60 text-sm">/month</span>
+          </div>
+        </div>
+        <div class="w-full h-px bg-white/20 mb-6"></div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3 text-sm text-white/80"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i> Unlimited classes</li>
+          <li class="flex items-center gap-3 text-sm text-white/80"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i> All yoga styles access</li>
+          <li class="flex items-center gap-3 text-sm text-white/80"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i> Pranayama & Meditation</li>
+          <li class="flex items-center gap-3 text-sm text-white/80"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i> Monthly progress tracking</li>
+          <li class="flex items-center gap-3 text-sm text-white/80"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i> Personal guidance</li>
+          <li class="flex items-center gap-3 text-sm text-white/80"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i> Diet consultation</li>
+        </ul>
+        <a href="#contact" class="block w-full py-3 bg-gold text-forest text-center text-sm font-bold rounded-xl hover:bg-gold-dark transition-all shadow-lg shadow-gold/20">Get Started</a>
+      </div>
+
+      <!-- Championship -->
+      <div class="card-hover bg-white rounded-2xl p-8 border border-beige relative reveal stagger-3">
+        <div class="text-center mb-8">
+          <h3 class="font-display text-xl font-semibold text-charcoal mb-2">Championship</h3>
+          <p class="text-charcoal-light text-sm mb-6">For competition aspirants</p>
+          <div class="flex items-baseline justify-center gap-1">
+            <span class="text-4xl font-display font-bold text-charcoal">₹3,500</span>
+            <span class="text-charcoal-light text-sm">/month</span>
+          </div>
+        </div>
+        <div class="gold-line w-full mb-6 rounded-full"></div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3 text-sm text-charcoal-light"><i data-lucide="check" class="w-4 h-4 text-forest flex-shrink-0"></i> Everything in Pro</li>
+          <li class="flex items-center gap-3 text-sm text-charcoal-light"><i data-lucide="check" class="w-4 h-4 text-forest flex-shrink-0"></i> Competition asana training</li>
+          <li class="flex items-center gap-3 text-sm text-charcoal-light"><i data-lucide="check" class="w-4 h-4 text-forest flex-shrink-0"></i> 1-on-1 coaching sessions</li>
+          <li class="flex items-center gap-3 text-sm text-charcoal-light"><i data-lucide="check" class="w-4 h-4 text-forest flex-shrink-0"></i> Routine choreography</li>
+          <li class="flex items-center gap-3 text-sm text-charcoal-light"><i data-lucide="check" class="w-4 h-4 text-forest flex-shrink-0"></i> Competition entry support</li>
+          <li class="flex items-center gap-3 text-sm text-charcoal-light"><i data-lucide="check" class="w-4 h-4 text-forest flex-shrink-0"></i> Video analysis & feedback</li>
+        </ul>
+        <a href="#contact" class="block w-full py-3 border-2 border-forest text-forest text-center text-sm font-semibold rounded-xl hover:bg-forest hover:text-white transition-all">Get Started</a>
+      </div>
+    </div>
+
+    <!-- Offer banner -->
+    <div class="mt-12 bg-gradient-to-r from-gold/10 via-gold/5 to-gold/10 border border-gold/20 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 reveal">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 bg-gold/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+          <i data-lucide="gift" class="w-7 h-7 text-gold-dark"></i>
+        </div>
+        <div>
+          <p class="font-display text-lg font-semibold text-charcoal">First Class is FREE!</p>
+          <p class="text-charcoal-light text-sm">No commitment. No credit card. Just walk in and experience the difference.</p>
+        </div>
+      </div>
+      <a href="#contact" class="px-8 py-3 bg-gold text-forest font-semibold rounded-full hover:bg-gold-dark transition-all whitespace-nowrap shadow-lg shadow-gold/20">Claim Free Trial</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section id="gallery" class="relative py-20 sm:py-28 bg-charcoal overflow-hidden">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-4 py-1.5 bg-gold/20 text-gold-light text-xs font-semibold tracking-widest uppercase rounded-full mb-4">Gallery</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold text-white tracking-tight mb-4">Moments from <span class="text-gradient-gold">Our Institute</span></h2>
+      <div class="gold-line w-24 mx-auto mt-4 mb-6 rounded-full"></div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div class="col-span-2 row-span-2 rounded-2xl overflow-hidden group reveal-scale stagger-1">
+        <img src="https://z-cdn-media.chatglm.cn/files/2094079e-7e76-4388-b7fb-3379347ef2b5.jpeg?auth_key=1884401708-b6276a0fddee4006b9850ce278afe912-0-82efafdc0d661ec77483e9b98225d597" alt="4th Level Yogasana Championship 2024-25" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+          <div>
+            <p class="text-white font-display font-semibold text-lg">4th Level Yogasana Championship</p>
+            <p class="text-white/60 text-sm">July 2024 • Dwarka, New Delhi</p>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden group reveal-scale stagger-2">
+        <img src="1.jpeg" alt="Kids yoga session 1" class="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-700">
+      </div>
+      <div class="rounded-2xl overflow-hidden group reveal-scale stagger-3">
+        <img src="2.jpeg" alt="Kids yoga session 2" class="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-700">
+      </div>
+      <div class="rounded-2xl overflow-hidden group reveal-scale stagger-4">
+        <img src="3.jpeg" alt="Kids yoga session 3" class="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-700">
+      </div>
+      <div class="rounded-2xl overflow-hidden group reveal-scale stagger-5">
+        <img src="4.jpeg" alt="Kids yoga session 4" class="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-700">
+      </div>
+      <div class="rounded-2xl overflow-hidden group reveal-scale stagger-6">
+        <img src="5.jpeg" alt="Kids yoga session 5" class="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-700">
+      </div>
+      <div class="rounded-2xl overflow-hidden group reveal-scale">
+        <img src="6.jpeg" alt="Kids yoga session 6" class="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-700">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section id="faq" class="relative py-20 sm:py-28 bg-warm overflow-hidden">
+  <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-4 py-1.5 bg-sage/10 text-sage text-xs font-semibold tracking-widest uppercase rounded-full mb-4">FAQ</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold text-charcoal tracking-tight mb-4">Frequently Asked <span class="text-gradient">Questions</span></h2>
+      <div class="gold-line w-24 mx-auto mt-4 mb-6 rounded-full"></div>
+    </div>
+
+    <div class="space-y-4 reveal">
+      <div class="faq-item bg-white rounded-xl border border-beige overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left">
+          <span class="font-display text-lg font-semibold text-charcoal pr-4">I'm a complete beginner. Can I join?</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-charcoal-light flex-shrink-0 faq-chevron"></i>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-charcoal-light leading-relaxed pb-6">Absolutely! Most of our students start as complete beginners. Our Hatha Yoga and Pranayama batches are specifically designed for first-timers. You'll be guided step-by-step with proper alignment cues, and we never push you beyond your comfort level. Your first class is free, so come try it with zero pressure.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-xl border border-beige overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left">
+          <span class="font-display text-lg font-semibold text-charcoal pr-4">What should I bring to my first class?</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-charcoal-light flex-shrink-0 faq-chevron"></i>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-charcoal-light leading-relaxed pb-6">Just bring yourself in comfortable clothing (loose-fitting or stretchable). We provide yoga mats, blocks, and straps. Avoid eating heavy meals 2 hours before class. Carry a water bottle — we have filtered water available too. That's it!</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-xl border border-beige overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left">
+          <span class="font-display text-lg font-semibold text-charcoal pr-4">What are the batch timings?</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-charcoal-light flex-shrink-0 faq-chevron"></i>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-charcoal-light leading-relaxed pb-6">We run multiple batches: Morning (6:00 AM, 7:00 AM), Afternoon (12:00 PM for ladies), and Evening (5:00 PM, 6:30 PM). Weekend special batches are also available. Exact timings may vary — please contact us for the current schedule.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-xl border border-beige overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left">
+          <span class="font-display text-lg font-semibold text-charcoal pr-4">Can my child (under 10) join yoga classes?</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-charcoal-light flex-shrink-0 faq-chevron"></i>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-charcoal-light leading-relaxed pb-6">Yes! We have a dedicated Kids Yoga program for children aged 5 to 15. The sessions are fun, interactive, and designed to improve flexibility, concentration, and confidence. Many of our kids have gone on to win district and state-level yoga competitions.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-xl border border-beige overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left">
+          <span class="font-display text-lg font-semibold text-charcoal pr-4">Do you offer competition training for yoga championships?</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-charcoal-light flex-shrink-0 faq-chevron"></i>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-charcoal-light leading-relaxed pb-6">Yes, this is one of our specialties! Jayashree Mahato, who has won medals at national and world championships, personally trains competition aspirants. We prepare students for Traditional Yogasana, Rhythmic Yoga, and Artistic Yoga events at district, state, national, and international levels.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-xl border border-beige overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left">
+          <span class="font-display text-lg font-semibold text-charcoal pr-4">I have a health condition (back pain / knee issue). Is yoga safe for me?</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-charcoal-light flex-shrink-0 faq-chevron"></i>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-charcoal-light leading-relaxed pb-6">Yoga can actually help with many conditions, but we take safety very seriously. Please inform your instructor about any health issues before starting. We'll modify poses accordingly and may recommend our Senior/Gentle Yoga or Chair Yoga programs. For serious conditions, we recommend consulting your doctor first.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT / MAP ===================== -->
+<section id="contact" class="relative py-20 sm:py-28 bg-beige overflow-hidden">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-4 py-1.5 bg-forest/10 text-forest text-xs font-semibold tracking-widest uppercase rounded-full mb-4">Get in Touch</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold text-charcoal tracking-tight mb-4">Start Your <span class="text-gradient">Yoga Journey Today</span></h2>
+      <div class="gold-line w-24 mx-auto mt-4 mb-6 rounded-full"></div>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      <!-- Contact Form -->
+      <div class="reveal-left">
+        <div class="bg-white rounded-2xl p-8 sm:p-10 border border-beige shadow-lg shadow-forest/5">
+          <h3 class="font-display text-2xl font-semibold text-charcoal mb-6">Book Your Free Trial Class</h3>
+          <form id="contactForm" class="space-y-5">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm font-medium text-charcoal mb-2">Full Name *</label>
+                <input type="text" required class="w-full px-4 py-3 rounded-xl border border-beige bg-warm focus:border-sage focus:ring-2 focus:ring-sage/20 outline-none transition-all text-charcoal placeholder:text-charcoal-light/50" placeholder="Your name">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-charcoal mb-2">Phone Number *</label>
+                <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-beige bg-warm focus:border-sage focus:ring-2 focus:ring-sage/20 outline-none transition-all text-charcoal placeholder:text-charcoal-light/50" placeholder="+91 XXXXX XXXXX">
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-2">Email</label>
+              <input type="email" class="w-full px-4 py-3 rounded-xl border border-beige bg-warm focus:border-sage focus:ring-2 focus:ring-sage/20 outline-none transition-all text-charcoal placeholder:text-charcoal-light/50" placeholder="your@email.com">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-2">Interested In *</label>
+              <select required class="w-full px-4 py-3 rounded-xl border border-beige bg-warm focus:border-sage focus:ring-2 focus:ring-sage/20 outline-none transition-all text-charcoal">
+                <option value="">Select a program</option>
+                <option>Hatha Yoga (Beginner)</option>
+                <option>Vinyasa Flow (Intermediate)</option>
+                <option>Kids Yoga (5-15 years)</option>
+                <option>Pranayama & Meditation</option>
+                <option>Competition Training</option>
+                <option>Senior Citizen Yoga</option>
+                <option>Free Trial Class</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-2">Any Health Conditions?</label>
+              <textarea rows="3" class="w-full px-4 py-3 rounded-xl border border-beige bg-warm focus:border-sage focus:ring-2 focus:ring-sage/20 outline-none transition-all text-charcoal placeholder:text-charcoal-light/50 resize-none" placeholder="Back pain, knee issues, etc. (optional)"></textarea>
+            </div>
+            <button type="submit" class="w-full py-4 bg-forest text-white font-semibold rounded-xl hover:bg-forest/90 transition-all shadow-lg shadow-forest/20 hover:shadow-forest/30 text-lg flex items-center justify-center gap-2">
+              <i data-lucide="send" class="w-5 h-5"></i>
+              Book My Free Class
+            </button>
+          </form>
+          <div id="formSuccess" class="hidden mt-4 p-4 bg-sage/10 border border-sage/20 rounded-xl text-center">
+            <i data-lucide="check-circle-2" class="w-8 h-8 text-forest mx-auto mb-2"></i>
+            <p class="font-semibold text-forest">Thank you! We'll contact you within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map & Info -->
+      <div class="reveal-right">
+        <div class="bg-white rounded-2xl overflow-hidden border border-beige shadow-lg shadow-forest/5 mb-6">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.856!2d77.04!3d28.58!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDM0JzQ4LjAiTiA3N8KwMDInMjQuMCJF!5e0!3m2!1sen!2sin!4v1" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full"></iframe>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="bg-white rounded-xl p-6 border border-beige">
+            <div class="w-10 h-10 bg-forest/10 rounded-lg flex items-center justify-center mb-3">
+              <i data-lucide="map-pin" class="w-5 h-5 text-forest"></i>
+            </div>
+            <p class="font-semibold text-charcoal text-sm mb-1">Location</p>
+            <p class="text-charcoal-light text-sm">Dwarka, New Delhi, India</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 border border-beige">
+            <div class="w-10 h-10 bg-gold/10 rounded-lg flex items-center justify-center mb-3">
+              <i data-lucide="phone" class="w-5 h-5 text-gold-dark"></i>
+            </div>
+            <p class="font-semibold text-charcoal text-sm mb-1">Call / WhatsApp</p>
+            <p class="text-charcoal-light text-sm">+91 XXXXX XXXXX</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 border border-beige">
+            <div class="w-10 h-10 bg-sage/10 rounded-lg flex items-center justify-center mb-3">
+              <i data-lucide="clock" class="w-5 h-5 text-forest"></i>
+            </div>
+            <p class="font-semibold text-charcoal text-sm mb-1">Timings</p>
+            <p class="text-charcoal-light text-sm">Mon–Sat: 6AM – 8PM</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 border border-beige">
+            <div class="w-10 h-10 bg-forest/10 rounded-lg flex items-center justify-center mb-3">
+              <i data-lucide="mail" class="w-5 h-5 text-forest"></i>
+            </div>
+            <p class="font-semibold text-charcoal text-sm mb-1">Email</p>
+            <p class="text-charcoal-light text-sm">info@youthlifeyoga.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="relative bg-forest overflow-hidden">
+  <div class="absolute top-0 left-0 w-full overflow-hidden leading-[0]">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="w-full h-10 sm:h-14">
+      <path fill="#F3EFE6" d="M0,30 C480,60 960,0 1440,30 L1440,60 L0,60 Z"></path>
+    </svg>
+  </div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+      <!-- Brand -->
+      <div class="lg:col-span-1">
+        <img src="https://z-cdn-media.chatglm.cn/files/20684485-1094-4384-bb7a-883fc0a69ad8.jpeg?auth_key=1884401708-f3234b415c124744ba9a4713b0023f2c-0-2019051228067fdfac063ec18e5d9ad4" alt="YouthLife Yoga Institute" class="h-20 w-auto mb-4 brightness-110">
+        <p class="text-white/50 text-sm leading-relaxed mb-6">The First Step Towards Longevity. Transforming lives through authentic yoga education since 2016.</p>
+        <div class="flex gap-3">
+          <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold/30 transition-colors">
+            <i data-lucide="instagram" class="w-4 h-4 text-white"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold/30 transition-colors">
+            <i data-lucide="facebook" class="w-4 h-4 text-white"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold/30 transition-colors">
+            <i data-lucide="youtube" class="w-4 h-4 text-white"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold/30 transition-colors">
+            <i data-lucide="phone" class="w-4 h-4 text-white"></i>
+          </a>
+        </div>
+      </div>
+      <!-- Quick Links -->
+      <div>
+        <h4 class="font-display text-lg font-semibold text-white mb-6">Quick Links</h4>
+        <ul class="space-y-3">
+          <li><a href="#courses" class="text-white/50 hover:text-gold transition-colors text-sm">Our Courses</a></li>
+          <li><a href="#founder" class="text-white/50 hover:text-gold transition-colors text-sm">Meet the Founder</a></li>
+          <li><a href="#teacher" class="text-white/50 hover:text-gold transition-colors text-sm">Our Teacher</a></li>
+          <li><a href="#pricing" class="text-white/50 hover:text-gold transition-colors text-sm">Pricing</a></li>
+          <li><a href="#gallery" class="text-white/50 hover:text-gold transition-colors text-sm">Gallery</a></li>
+          <li><a href="#contact" class="text-white/50 hover:text-gold transition-colors text-sm">Contact Us</a></li>
+        </ul>
+      </div>
+      <!-- Programs -->
+      <div>
+        <h4 class="font-display text-lg font-semibold text-white mb-6">Programs</h4>
+        <ul class="space-y-3">
+          <li><a href="#courses" class="text-white/50 hover:text-gold transition-colors text-sm">Hatha Yoga</a></li>
+          <li><a href="#courses" class="text-white/50 hover:text-gold transition-colors text-sm">Vinyasa Flow</a></li>
+          <li><a href="#courses" class="text-white/50 hover:text-gold transition-colors text-sm">Kids Yoga</a></li>
+          <li><a href="#courses" class="text-white/50 hover:text-gold transition-colors text-sm">Pranayama & Meditation</a></li>
+          <li><a href="#courses" class="text-white/50 hover:text-gold transition-colors text-sm">Competition Training</a></li>
+          <li><a href="#courses" class="text-white/50 hover:text-gold transition-colors text-sm">Senior Yoga</a></li>
+        </ul>
+      </div>
+      <!-- Contact -->
+      <div>
+        <h4 class="font-display text-lg font-semibold text-white mb-6">Contact</h4>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <i data-lucide="map-pin" class="w-4 h-4 text-gold mt-0.5 flex-shrink-0"></i>
+            <span class="text-white/50 text-sm">Dwarka, New Delhi, India</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="phone" class="w-4 h-4 text-gold mt-0.5 flex-shrink-0"></i>
+            <span class="text-white/50 text-sm">+91 XXXXX XXXXX</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="mail" class="w-4 h-4 text-gold mt-0.5 flex-shrink-0"></i>
+            <span class="text-white/50 text-sm">info@youthlifeyoga.com</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="clock" class="w-4 h-4 text-gold mt-0.5 flex-shrink-0"></i>
+            <span class="text-white/50 text-sm">Mon–Sat: 6:00 AM – 8:00 PM</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Bottom -->
+    <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-white/30 text-sm">© 2025 YouthLife Yoga Institute. All rights reserved.</p>
+      <p class="text-white/20 text-xs">The First Step Towards Longevity</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== FLOATING CTA ===================== -->
+<a href="#contact" id="floatingCTA" class="fixed bottom-6 right-6 z-40 px-6 py-4 bg-gold text-forest font-bold rounded-full shadow-2xl shadow-gold/30 animate-pulse-gold hover:bg-gold-dark transition-all hover:-translate-y-1 flex items-center gap-2 text-sm opacity-0 translate-y-10" style="transition:all 0.5s cubic-bezier(0.16,1,0.3,1);">
+  <i data-lucide="calendar-check" class="w-5 h-5"></i>
+  <span class="hidden sm:inline">Book a Class</span>
+</a>
+
+<!-- ===================== JAVASCRIPT ===================== -->
+<script>
+// Initialize Lucide icons
+lucide.createIcons();
+
+// ---- Navbar scroll effect ----
+const navbar = document.getElementById('navbar');
+const floatingCTA = document.getElementById('floatingCTA');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  if (scrollY > 80) {
+    navbar.classList.add('nav-scrolled');
+  } else {
+    navbar.classList.remove('nav-scrolled');
+  }
+  // Floating CTA
+  if (scrollY > 600) {
+    floatingCTA.style.opacity = '1';
+    floatingCTA.style.transform = 'translateY(0)';
+  } else {
+    floatingCTA.style.opacity = '0';
+    floatingCTA.style.transform = 'translateY(10px)';
+  }
+  lastScroll = scrollY;
+});
+
+// ---- Mobile menu ----
+const menuToggle = document.getElementById('menuToggle');
+const menuClose = document.getElementById('menuClose');
+const mobileMenu = document.getElementById('mobileMenu');
+const menuOverlay = document.getElementById('menuOverlay');
+const mobileLinks = document.querySelectorAll('.mobile-link');
+
+function openMenu() {
+  mobileMenu.classList.add('open');
+  menuOverlay.classList.remove('hidden');
+  setTimeout(() => menuOverlay.style.opacity = '1', 10);
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu() {
+  mobileMenu.classList.remove('open');
+  menuOverlay.style.opacity = '0';
+  setTimeout(() => menuOverlay.classList.add('hidden'), 300);
+  document.body.style.overflow = '';
+}
+
+menuToggle.addEventListener('click', openMenu);
+menuClose.addEventListener('click', closeMenu);
+menuOverlay.addEventListener('click', closeMenu);
+mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+// ---- Scroll reveal ----
+const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+revealElements.forEach(el => revealObserver.observe(el));
+
+// ---- Trust bar: progress bar + count-up ----
+const trustBar = document.getElementById('trustBar');
+const progressBar = document.getElementById('progressBar');
+let trustAnimated = false;
+
+const trustObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !trustAnimated) {
+      trustAnimated = true;
+      // Fill progress bar
+      progressBar.classList.add('filled');
+      // Count up numbers
+      const counters = document.querySelectorAll('.counter');
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const duration = 2000;
+        const startTime = performance.now();
+
+        function updateCounter(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease out cubic
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(eased * target);
+          counter.textContent = current.toLocaleString();
+          if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target.toLocaleString();
+          }
+        }
+        requestAnimationFrame(updateCounter);
+      });
+    }
+  });
+}, { threshold: 0.3 });
+
+trustObserver.observe(trustBar);
+
+// ---- FAQ accordion ----
+document.querySelectorAll('.faq-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    // Toggle current
+    if (!isOpen) {
+      item.classList.add('open');
+    }
+  });
+});
+
+// ---- Contact form ----
+document.getElementById('contactForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').classList.remove('hidden');
+  lucide.createIcons();
+});
+
+// ---- Smooth scroll for anchor links ----
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      const offset = 100;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
